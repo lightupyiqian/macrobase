@@ -15,6 +15,8 @@ public class RestServer {
     private static Logger log = LoggerFactory.getLogger(RestServer.class);
 
     public static void main(String[] args) {
+        port(Integer.parseInt(args[0]));
+
         post("/query", RestServer::processBasicBatchQuery, RestServer::toJsonString);
 
         exception(Exception.class, (exception, request, response) -> {
